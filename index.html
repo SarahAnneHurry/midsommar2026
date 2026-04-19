@@ -211,7 +211,20 @@
   .submit-btn:active{transform:scale(0.98)}
   .empty-state{text-align:center;padding:3rem;color:var(--text-light);font-size:0.9rem;font-style:italic}
 
-  /* ADMIN BAR */
+  /* ADMIN TEAM EDITING */
+  body.admin-mode .team-pill[data-team]{cursor:pointer;position:relative;padding-right:1.4em}
+  body.admin-mode .team-pill[data-team]::after{content:'✎';position:absolute;right:0.3em;font-size:0.7em;opacity:0.6}
+  body.admin-mode .team-pill[data-team]:hover{background:var(--rose-pale);color:var(--rose);border-color:var(--rose-light)}
+  .team-edit-modal{display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.4);align-items:center;justify-content:center}
+  .team-edit-modal.open{display:flex}
+  .team-edit-box{background:var(--white);border-radius:16px;padding:2rem;width:90%;max-width:380px;box-shadow:0 8px 40px rgba(0,0,0,0.2)}
+  .team-edit-box h3{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:1rem;color:var(--text)}
+  .team-edit-box input{width:100%;border:1.5px solid var(--cream-dark);border-radius:8px;padding:0.65rem 0.9rem;font-family:'Lato',sans-serif;font-size:0.95rem;color:var(--text);background:var(--cream);outline:none;margin-bottom:1rem}
+  .team-edit-box input:focus{border-color:var(--rose-light)}
+  .team-edit-actions{display:flex;gap:0.7rem}
+  .team-edit-actions button{flex:1;padding:0.65rem;border:none;border-radius:8px;font-family:'Lato',sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer}
+  .btn-save-team{background:var(--sage);color:white}
+  .btn-cancel-team{background:var(--cream-dark);color:var(--text)}
   .admin-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--text);color:var(--cream);padding:0.8rem 2rem;font-size:0.8rem;align-items:center;justify-content:space-between;gap:1rem}
   body.admin-mode .admin-bar{display:flex}
   .admin-bar-label{display:flex;align-items:center;gap:0.6rem}
@@ -426,18 +439,18 @@
         </thead>
         <tbody>
           <tr class="day-group-thu"><td><span class="team-pill">Sarah &amp; Mårten</span></td><td><span class="day-pill dp-thu">Torsdag</span></td><td>Middag (vuxna &amp; barn)</td><td>Planera, handla, laga, städa</td><td>För dem som anländer på torsdag</td><td></td></tr>
-          <tr class="day-group-fri"><td><span class="team-pill">Team A</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Vuxna midsommarlunch inkl dryck och dekorationer</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">papperstallrikar</td></tr>
-          <tr class="day-group-fri"><td><span class="team-pill">Team B</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Vuxna middag inkl dryck</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">sopsäckar</td></tr>
-          <tr class="day-group-sat"><td><span class="team-pill">Team C</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Vuxna lunch inkl dryck</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">pappersservetter</td></tr>
-          <tr class="day-group-sat"><td><span class="team-pill">Team D</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Vuxna middag inkl dryck</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">toapapper</td></tr>
-          <tr class="day-group-all"><td><span class="team-pill">Team E</span></td><td><span class="day-pill dp-all">Alla dagar</span></td><td>Frukost</td><td>Handla för alla 3 morgnar</td><td>Självservering — 17 vuxna · 19 barn</td><td class="hygien-cell">hushållspapper</td></tr>
-          <tr class="day-group-fri"><td><span class="team-pill">Team E</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Barnmiddag</td><td>Planera, handla, laga, städa</td><td></td><td></td></tr>
-          <tr class="day-group-fri"><td><span class="team-pill">Team F</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Snacks + Cocktail / Festis</td><td>Planera, handla, förbereda, städa</td><td></td><td class="hygien-cell">hushållspapper</td></tr>
-          <tr class="day-group-fri"><td><span class="team-pill">Team F</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Barnlunch</td><td>Planera, handla, laga, städa</td><td></td><td></td></tr>
-          <tr class="day-group-sat"><td><span class="team-pill">Team G</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Snacks + Cocktail / Festis</td><td>Planera, handla, förbereda, städa</td><td></td><td class="hygien-cell">våtservetter</td></tr>
-          <tr class="day-group-sat"><td><span class="team-pill">Team G</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Barnlunch</td><td>Planera, handla, laga, städa</td><td></td><td></td></tr>
-          <tr class="day-group-fri"><td><span class="team-pill">Team H</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Midsommartårta</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">toapapper</td></tr>
-          <tr class="day-group-sat"><td><span class="team-pill">Team H</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Barnmiddag</td><td>Planera, handla, laga, städa</td><td></td><td></td></tr>
+          <tr class="day-group-fri"><td><span class="team-pill" data-team="A">Team A</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Vuxna midsommarlunch inkl dryck och dekorationer</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">papperstallrikar</td></tr>
+          <tr class="day-group-fri"><td><span class="team-pill" data-team="B">Team B</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Vuxna middag inkl dryck</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">sopsäckar</td></tr>
+          <tr class="day-group-sat"><td><span class="team-pill" data-team="C">Team C</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Vuxna lunch inkl dryck</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">pappersservetter</td></tr>
+          <tr class="day-group-sat"><td><span class="team-pill" data-team="D">Team D</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Vuxna middag inkl dryck</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">toapapper</td></tr>
+          <tr class="day-group-all"><td><span class="team-pill" data-team="E">Team E</span></td><td><span class="day-pill dp-all">Alla dagar</span></td><td>Frukost</td><td>Handla för alla 3 morgnar</td><td>Självservering — 17 vuxna · 19 barn</td><td class="hygien-cell">hushållspapper</td></tr>
+          <tr class="day-group-fri"><td><span class="team-pill" data-team="E">Team E</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Barnmiddag</td><td>Planera, handla, laga, städa</td><td></td><td></td></tr>
+          <tr class="day-group-fri"><td><span class="team-pill" data-team="F">Team F</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Snacks + Cocktail / Festis</td><td>Planera, handla, förbereda, städa</td><td></td><td class="hygien-cell">hushållspapper</td></tr>
+          <tr class="day-group-fri"><td><span class="team-pill" data-team="F">Team F</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Barnlunch</td><td>Planera, handla, laga, städa</td><td></td><td></td></tr>
+          <tr class="day-group-sat"><td><span class="team-pill" data-team="G">Team G</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Snacks + Cocktail / Festis</td><td>Planera, handla, förbereda, städa</td><td></td><td class="hygien-cell">våtservetter</td></tr>
+          <tr class="day-group-sat"><td><span class="team-pill" data-team="G">Team G</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Barnlunch</td><td>Planera, handla, laga, städa</td><td></td><td></td></tr>
+          <tr class="day-group-fri"><td><span class="team-pill" data-team="H">Team H</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Midsommartårta</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">toapapper</td></tr>
+          <tr class="day-group-sat"><td><span class="team-pill" data-team="H">Team H</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Barnmiddag</td><td>Planera, handla, laga, städa</td><td></td><td></td></tr>
         </tbody>
       </table>
     </div>
@@ -701,14 +714,25 @@
   <p style="margin-top:1rem">Frågor? Skriv på anslagstavlan ovan.</p>
 </footer>
 
+<div class="team-edit-modal" id="team-edit-modal">
+  <div class="team-edit-box">
+    <h3>Redigera lagnamn</h3>
+    <input type="text" id="team-edit-input" placeholder="t.ex. Sara &amp; Johan">
+    <div class="team-edit-actions">
+      <button class="btn-save-team" onclick="window.saveTeamName()">Spara</button>
+      <button class="btn-cancel-team" onclick="window.closeTeamModal()">Avbryt</button>
+    </div>
+  </div>
+</div>
+
 <div class="admin-bar">
-  <div class="admin-bar-label"><span class="admin-dot"></span> Adminläge aktivt</div>
+  <div class="admin-bar-label"><span class="admin-dot"></span> Adminläge — klicka på ett lagnamn för att ändra det</div>
   <button class="exit-admin-btn" onclick="exitAdmin()">Avsluta adminläge</button>
 </div>
 
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getFirestore, collection, addDoc, deleteDoc, doc, query, orderBy, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, collection, addDoc, deleteDoc, doc, setDoc, getDoc, query, orderBy, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBejXrvXrQhrtDrQ9lfCjX7DtHbhqlW_Ls",
@@ -723,7 +747,61 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const ADMIN_PASSWORD = 'midsommar2026';
 
-// ── REAL-TIME LISTENERS ──────────────────────────────────────────────────────
+// ── TEAM NAMES ────────────────────────────────────────────────────────────────
+let teamNames = {A:'Team A',B:'Team B',C:'Team C',D:'Team D',E:'Team E',F:'Team F',G:'Team G',H:'Team H'};
+let editingTeam = null;
+
+async function loadTeamNames(){
+  try {
+    const snap = await getDoc(doc(db,'settings','teamNames'));
+    if(snap.exists()) Object.assign(teamNames, snap.data());
+  } catch(e){}
+  applyTeamNames();
+}
+
+function applyTeamNames(){
+  document.querySelectorAll('.team-pill[data-team]').forEach(pill => {
+    const key = pill.dataset.team;
+    if(teamNames[key]) pill.textContent = teamNames[key];
+  });
+}
+
+// Click handler for pills in admin mode
+document.addEventListener('click', e => {
+  const pill = e.target.closest('.team-pill[data-team]');
+  if(!pill || !document.body.classList.contains('admin-mode')) return;
+  editingTeam = pill.dataset.team;
+  document.getElementById('team-edit-input').value = teamNames[editingTeam] || '';
+  document.getElementById('team-edit-modal').classList.add('open');
+  setTimeout(()=>document.getElementById('team-edit-input').select(), 50);
+});
+
+window.saveTeamName = async function(){
+  const val = document.getElementById('team-edit-input').value.trim();
+  if(!val || !editingTeam) return;
+  teamNames[editingTeam] = val;
+  applyTeamNames();
+  window.closeTeamModal();
+  await setDoc(doc(db,'settings','teamNames'), teamNames);
+};
+
+window.closeTeamModal = function(){
+  document.getElementById('team-edit-modal').classList.remove('open');
+  editingTeam = null;
+};
+
+// Close modal on backdrop click
+document.getElementById('team-edit-modal').addEventListener('click', e => {
+  if(e.target === e.currentTarget) window.closeTeamModal();
+});
+
+// Save on Enter key
+document.getElementById('team-edit-input').addEventListener('keydown', e => {
+  if(e.key === 'Enter') window.saveTeamName();
+  if(e.key === 'Escape') window.closeTeamModal();
+});
+
+// ── REAL-TIME LISTENERS ───────────────────────────────────────────────────────
 onSnapshot(query(collection(db,'messages'),orderBy('created_at','asc')), snap => {
   renderMessages(snap.docs.map(d=>({id:d.id,...d.data()})));
 });
@@ -731,7 +809,7 @@ onSnapshot(query(collection(db,'arrivals'),orderBy('created_at','asc')), snap =>
   renderArrivals(snap.docs.map(d=>({id:d.id,...d.data()})));
 });
 
-// ── ARRIVALS ─────────────────────────────────────────────────────────────────
+// ── ARRIVALS ──────────────────────────────────────────────────────────────────
 const DAY_CLS={'Thu afternoon':'day-thu','Thu evening':'day-thu','Fri morning':'day-fri','Fri midday':'day-fri','Fri afternoon':'day-fri','Sat':'day-sat'};
 
 function renderArrivals(rows){
@@ -765,7 +843,7 @@ window.removeArrival = async function(id, name){
   await deleteDoc(doc(db,'arrivals',id));
 };
 
-// ── MESSAGES ─────────────────────────────────────────────────────────────────
+// ── MESSAGES ──────────────────────────────────────────────────────────────────
 function renderMessages(msgs){
   const real=msgs.filter(m=>!m.placeholder);
   document.getElementById('message-list').innerHTML=real.length?real.map(messageHtml).join(''):'<div class="empty-state">Inga meddelanden än — var den första att skriva!</div>';
@@ -818,6 +896,7 @@ function updateCountdown(){
 function escHtml(str){return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 updateCountdown();setInterval(updateCountdown,30000);
+loadTeamNames();
 </script>
 </body>
 </html>
