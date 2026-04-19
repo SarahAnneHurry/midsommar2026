@@ -124,9 +124,7 @@
   .dp-sat{background:var(--rose-pale);color:var(--rose)}
   .dp-all{background:#FFF9C4;color:#827717}
   .hygien-cell{font-size:0.8rem;color:var(--text-light);font-style:italic}
-  .db-status{font-size:0.75rem;color:var(--text-light);margin-top:1rem;padding:0.7rem 1rem;background:var(--cream);border-radius:6px;border:1px solid var(--cream-dark)}
-  .db-status.ok{color:var(--sage);border-color:var(--sage-light)}
-  .db-status.err{color:var(--rose);border-color:var(--rose-light)}
+  .db-status{display:none}
 
   /* ARRIVALS */
   #arrivals{background:var(--cream)}
@@ -257,6 +255,7 @@
     <li><a href="#getting-there">Getting There</a></li>
     <li><a href="#schedule">Schedule</a></li>
     <li><a href="#board">Board</a></li>
+    <li><a href="#cleaning">Städning</a></li>
     <li><a href="#cows">Korna</a></li>
   </ul>
   <div class="nav-hamburger" id="hamburger" onclick="toggleMobileNav()">
@@ -272,6 +271,7 @@
   <a href="#getting-there" onclick="closeMobileNav()">Getting There</a>
   <a href="#schedule" onclick="closeMobileNav()">Schedule</a>
   <a href="#board" onclick="closeMobileNav()">Message Board</a>
+  <a href="#cleaning" onclick="closeMobileNav()">Städning</a>
   <a href="#cows" onclick="closeMobileNav()">Korna</a>
 </div>
 
@@ -283,6 +283,7 @@
   <a href="#getting-there" class="jump-btn">🗺 Getting There</a>
   <a href="#schedule" class="jump-btn">🗓 Schedule</a>
   <a href="#board" class="jump-btn">💬 Board</a>
+  <a href="#cleaning" class="jump-btn">🧹 Städning</a>
   <a href="#cows" class="jump-btn">🐄 Korna</a>
 </div>
 
@@ -352,7 +353,7 @@
       <div class="info-block gold-top">
         <h3>🏠 Platsen &amp; husen</h3>
         <ul>
-          <li><strong>Det finns plats för varje familj att ha sitt eget rum</strong> — Alla har egentligen riktiga sängar, men vissa familjer kan även ha madrasser på golvet beroende på storlek</li>
+          <li><strong>Det finns plats för varje familj att ha sitt eget rum</strong> — Alla har egentligen riktiga sängar, men vissa familjer kan även behöva ha madrasser på golvet beroende på storlek</li>
           <li>Vi delar platsen med en annan familj — <strong>flytta inte saker mellan husen</strong></li>
           <li>Rapportera genast till värdarna om något går sönder</li>
           <li>Vi behöver alla hjälpas åt att städa innan vi åker — egna rum, hallar, kök, vardagsrum och badrum behöver en runda</li>
@@ -520,18 +521,9 @@
           <div class="store-name">ICA / butiker i Linköping</div>
           <div class="store-distance">~2 timmar från Tribäck</div>
         </div>
-      </div>
-      <div style="margin-top:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-        <div class="store-card" style="border-color:var(--sage-light)">
-          <div class="info-icon" style="font-size:1.3rem;margin-bottom:0.4rem">♻️</div>
-          <div class="store-name">Återvinningsstation Virserum</div>
+        <div class="store-card">
+          <div class="store-name">ICA Nära Virserum</div>
           <div class="store-distance">~15 min från Tribäck</div>
-          <div class="store-link"><a href="https://www.google.com/maps/place/Recycling+Station/@57.3246691,15.5833694,17z/data=!4m15!1m8!3m7!1s0x46576332a9f3b859:0xb642ecd3afc518ac!2s577+71+Virserum!3b1!8m2!3d57.3199949!4d15.5812344!16s%2Fm%2F047lvf9!3m5!1s0x46577d0058dd8851:0xd5380cc0aef86d97!8m2!3d57.3250522!4d15.5862441!16s%2Fg%2F11y66wlfcm?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">→ Visa på Google Maps</a></div>
-        </div>
-        <div class="store-card" style="border-color:var(--rose-light)">
-          <div class="info-icon" style="font-size:1.3rem;margin-bottom:0.4rem">🚑</div>
-          <div class="store-name">Ambulans</div>
-          <div class="store-distance" style="line-height:1.6">Leta efter den Regionala Ambulansservicen vid behov.</div>
         </div>
       </div>
     </div>
@@ -608,6 +600,45 @@
   </div>
 </section>
 <hr class="divider">
+
+<hr class="divider">
+
+<!-- CLEANING -->
+<section id="cleaning">
+  <div class="section-inner">
+    <p class="section-label">Innan ni åker</p>
+    <h2 class="section-title">Städning</h2>
+    <p class="section-body" style="margin-bottom:2rem">Vi är många och delar ett fint ställe — vi behöver alla hjälpas åt att lämna det som vi hittade det.</p>
+
+    <!-- ROOMS -->
+    <div style="background:var(--white);border-radius:14px;padding:1.6rem 1.8rem;border-top:3px solid var(--sage);margin-bottom:1.5rem">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:0.9rem">🛏 Egna rum</h3>
+      <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8">Dammsug och moppa ditt eget rum och återställ det till det skick du hittade det i. <strong>Tips: ta ett foto på rummet innan du flyttar in</strong> så vet du hur det ska se ut när du åker. Skaka även ut mattorna om det finns några i ditt rum.</p>
+    </div>
+
+    <!-- SHARED SPACES -->
+    <div style="background:var(--white);border-radius:14px;padding:1.6rem 1.8rem;border-top:3px solid var(--sage);margin-bottom:1.5rem">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:0.9rem">🏠 Gemensamma utrymmen</h3>
+      <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8">Vi behöver tillsammans dammsuga och moppa hallar, badrum, kök och vardagsrum. Skaka ut mattorna i hallarna och köken. Toaletter och handfat behöver också rengöras ordentligt.</p>
+    </div>
+
+    <!-- RECYCLING -->
+    <div style="background:var(--white);border-radius:14px;padding:1.6rem 1.8rem;border-top:3px solid var(--gold);margin-bottom:1.5rem">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:0.9rem">♻️ Återvinningsstation Virserum</h3>
+      <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8">Hjälp till att köra återvinning till Återvinningsstationen i Virserum (~15 min bort) innan ni åker hem. Leta även efter den Regionala Ambulansservicen.</p>
+      <div style="margin-top:0.9rem">
+        <div class="store-link"><a href="https://www.google.com/maps/place/Recycling+Station/@57.3246691,15.5833694,17z/data=!4m15!1m8!3m7!1s0x46576332a9f3b859:0xb642ecd3afc518ac!2s577+71+Virserum!3b1!8m2!3d57.3199949!4d15.5812344!16s%2Fm%2F047lvf9!3m5!1s0x46577d0058dd8851:0xd5380cc0aef86d97!8m2!3d57.3250522!4d15.5862441!16s%2Fg%2F11y66wlfcm?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="font-size:0.82rem;color:var(--rose);text-decoration:none;font-weight:700">→ Visa på Google Maps</a></div>
+      </div>
+    </div>
+
+    <!-- DIAPERS -->
+    <div style="background:var(--white);border-radius:14px;padding:1.6rem 1.8rem;border-top:3px solid var(--rose);margin-bottom:1.5rem">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:0.9rem">👶 Blöjor</h3>
+      <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8">Det kommer att finnas ett <strong>stort sopkärl med lock utomhus</strong>, speciellt avsett för blöjor. Vänligen använd detta och <strong>lägg inte blöjor i sopkärlen inomhus</strong>.</p>
+    </div>
+
+  </div>
+</section>
 
 <!-- COWS -->
 <section id="cows">
@@ -732,7 +763,7 @@ function exitAdmin(){document.body.classList.remove('admin-mode');}
 function toggleMobileNav(){document.getElementById('mobile-nav').classList.toggle('open');}
 function closeMobileNav(){document.getElementById('mobile-nav').classList.remove('open');}
 
-const SECTIONS=['place','meals','bar','arrivals','getting-there','schedule','board','cows'];
+const SECTIONS=['place','meals','bar','arrivals','getting-there','schedule','board','cleaning','cows'];
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){
     document.querySelectorAll('.jump-btn').forEach(b=>b.classList.remove('active'));
