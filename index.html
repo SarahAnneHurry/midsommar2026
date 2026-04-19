@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Midsommar 2026 · Tribäck</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
   :root {
     --cream:#FAF6EE; --cream-dark:#F0E8D8;
@@ -231,15 +230,42 @@
   @media(max-width:768px){
     .nav-links{display:none}
     .nav-hamburger{display:flex}
-    .section-jumper{top:60px;gap:0.4rem;padding:0.7rem 1rem;overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start}
+    .section-jumper{top:60px;gap:0.4rem;padding:0.7rem 1rem;overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;-webkit-overflow-scrolling:touch}
+    .section-jumper::-webkit-scrollbar{display:none}
     .schedule-grid,.board-layout,.info-blocks,.info-cards,.store-list,.cows-layout,.arrivals-layout,.bar-cards{grid-template-columns:1fr}
     .gallery{grid-template-columns:1fr 1fr}
     .board-form,.arrival-form{position:static}
+    /* meals table scrolls horizontally on mobile */
+    .meals-table-wrap{border-radius:10px;-webkit-overflow-scrolling:touch}
+    .meals-table{font-size:0.78rem;min-width:560px}
+    .meals-table th,.meals-table td{padding:0.65rem 0.8rem}
+    /* section headings */
+    .section-title{font-size:clamp(1.6rem,6vw,2.4rem)}
+    /* info blocks full width */
+    .info-block{padding:1.2rem 1.4rem}
+    /* cleaning / new inline cards tighten padding */
+    section{padding:4rem 1.2rem}
+    .section-inner{padding:0}
+    /* arrivals layout single col with breathing room */
+    .arrivals-layout{gap:1.5rem}
+    /* bar cards stack cleanly */
+    .bar-cards{gap:1rem}
+    /* schedule grid */
+    .schedule-grid{gap:1.5rem}
+    /* shopping store grid */
+    .store-list{grid-template-columns:1fr 1fr}
   }
   @media(max-width:480px){
     .hero-dates{flex-direction:column;gap:0.8rem}
     .countdown{gap:0.8rem}
     .gallery{grid-template-columns:1fr}
+    .store-list{grid-template-columns:1fr}
+    .countdown-unit{padding:0.75rem 1rem;min-width:56px}
+    .countdown-num{font-size:1.8rem}
+    nav{padding:0 1rem}
+    section{padding:3rem 1rem}
+    .arrival-form{padding:1.2rem}
+    .board-form{padding:1.2rem}
   }
 </style>
 </head>
@@ -382,7 +408,7 @@
     <p class="section-body" style="margin-bottom:2rem">Varje lag ansvarar för planering, inköp, matlagning och städning. Kolla allergier och matpreferenser nedan innan du planerar din meny.</p>
     <div style="background:var(--cream);border-left:3px solid var(--gold);border-radius:10px;padding:1.4rem 1.6rem;margin-bottom:1.5rem">
       <h3 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--gold);margin-bottom:0.7rem">💡 Om upplägget</h3>
-      <p style="font-size:0.9rem;color:var(--text);line-height:1.8">Vi delade upp måltiderna i <strong>barn</strong> och <strong>vuxna</strong> på grund av gruppstorleken. Med tanke på logistiken — att inte bara transportera sina egna saker utan även mat för så många personer — valde vi att till exempel ge ett lag ansvar för <strong>Midsommartårtan</strong> (samt en barnmiddag), medan <strong>Midsommarlunchen</strong> är ett eget lags ansvar.</p>
+      <p style="font-size:0.9rem;color:var(--text);line-height:1.8">Vi delade upp måltiderna i <strong>barn- och vuxenmåltider</strong> på grund av gruppens storlek. Med tanke på logistiken — inte bara att transportera egna saker utan även mat till så många personer — valde vi till exempel att ge ett lag ansvar för <strong>midsommartårtan</strong> (samt en barnmiddag), medan <strong>midsommarlunchen</strong> är ett eget lags ansvar. Tanken kring att vissa lag har mer än ett ansvar är också att <strong>barnmåltider inte ska vara komplicerade</strong> och att vuxenmåltider kan ha lite mer eftertanke.</p>
     </div>
     <div class="allergy-notice">
       <h3>⚠️ Allergier &amp; matpreferenser</h3>
@@ -417,9 +443,9 @@
     </div>
     <!-- BREAKFAST NOTICE -->
     <div style="margin-top:2rem;background:var(--sage-pale);border-left:3px solid var(--sage);border-radius:10px;padding:1.4rem 1.6rem">
-      <h3 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--sage);margin-bottom:0.7rem">🍳 Breakfast</h3>
-      <p style="font-size:0.9rem;color:var(--text);line-height:1.8">Since we are so many and every family has different schedules, <strong>breakfast is self-serve</strong>. Whoever is first up can set out some things and make the first pot of coffee, but everyone is responsible for their own family's breakfast needs.</p>
-      <p style="font-size:0.9rem;color:var(--text);line-height:1.8;margin-top:0.7rem">One team will be responsible for <strong>shopping and bringing the breakfast supplies for the weekend</strong> — but not for preparing anything.</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--sage);margin-bottom:0.7rem">🍳 Frukost</h3>
+      <p style="font-size:0.9rem;color:var(--text);line-height:1.8">Eftersom vi är så många och varje familj har olika scheman är <strong>frukosten självservering</strong>. Den som är uppe först kan ta fram lite saker och sätta på det första kaffet, men varje familj ansvarar för sin egen frukost.</p>
+      <p style="font-size:0.9rem;color:var(--text);line-height:1.8;margin-top:0.7rem">Ett lag ansvarar för att <strong>handla och ta med frukostvaror för hela helgen</strong> — men inte för att laga något.</p>
     </div>
   </div>
 </section>
@@ -622,6 +648,13 @@
       <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8">Vi behöver tillsammans dammsuga och moppa hallar, badrum, kök och vardagsrum. Skaka ut mattorna i hallarna och köken. Toaletter och handfat behöver också rengöras ordentligt.</p>
     </div>
 
+    <!-- LEFTOVERS -->
+    <div style="background:var(--white);border-radius:14px;padding:1.6rem 1.8rem;border-top:3px solid var(--sage);margin-bottom:1.5rem">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:0.9rem">🥡 Matrester</h3>
+      <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8">Familjen vi delar stället med använder inte mat de inte tagit med själva — därför ber vi alla att <strong>ta med sig det som inte förbrukats</strong>, eller kasta det som troligtvis inte kommer att ätas upp under helgen. Försök att inte köpa för mycket.</p>
+      <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8;margin-top:0.7rem">Har du matrester från din ansvarsmåltid och hoppas att de äts upp — toppen! Men <strong>ta ansvar för att även kasta det som inte ätits upp innan ni åker på söndag</strong>.</p>
+    </div>
+
     <!-- RECYCLING -->
     <div style="background:var(--white);border-radius:14px;padding:1.6rem 1.8rem;border-top:3px solid var(--gold);margin-bottom:1.5rem">
       <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:0.9rem">♻️ Återvinningsstation Virserum</h3>
@@ -673,96 +706,97 @@
   <button class="exit-admin-btn" onclick="exitAdmin()">Avsluta adminläge</button>
 </div>
 
-<script>
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getFirestore, collection, addDoc, deleteDoc, doc, query, orderBy, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBejXrvXrQhrtDrQ9lfCjX7DtHbhqlW_Ls",
+  authDomain: "midsommar2026.firebaseapp.com",
+  projectId: "midsommar2026",
+  storageBucket: "midsommar2026.firebasestorage.app",
+  messagingSenderId: "268481334350",
+  appId: "1:268481334350:web:65a9972373fc5d1e07871f"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 const ADMIN_PASSWORD = 'midsommar2026';
 
-let supabaseClient=null, useLocalFallback=false;
-const localData={messages:[],arrivals:[]};
+// ── REAL-TIME LISTENERS ──────────────────────────────────────────────────────
+onSnapshot(query(collection(db,'messages'),orderBy('created_at','asc')), snap => {
+  renderMessages(snap.docs.map(d=>({id:d.id,...d.data()})));
+});
+onSnapshot(query(collection(db,'arrivals'),orderBy('created_at','asc')), snap => {
+  renderArrivals(snap.docs.map(d=>({id:d.id,...d.data()})));
+});
 
-function initSupabase(){
-  if(SUPABASE_URL==='YOUR_SUPABASE_URL'){
-    setStatus('⚠️ Demo-läge — data sparas bara i din webbläsare.','err');
-    useLocalFallback=true; loadLocalData(); return;
-  }
-  try{
-    supabaseClient=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
-    setStatus('✓ Ansluten — all data synkas live för alla.','ok');
-    loadAllData(); subscribeToChanges();
-  }catch(e){useLocalFallback=true;setStatus('⚠️ Kunde inte ansluta — lokalt läge.','err');loadLocalData();}
-}
-function setStatus(msg,cls){const el=document.getElementById('db-status-bar');el.textContent=msg;el.className='db-status '+(cls||'');}
-
-function loadLocalData(){
-  try{const s=localStorage.getItem('midsommar2026');if(s)Object.assign(localData,JSON.parse(s));}catch(e){}
-  renderMessages(localData.messages||[]);
-  renderArrivals(localData.arrivals||[]);
-}
-function saveLocal(){try{localStorage.setItem('midsommar2026',JSON.stringify(localData));}catch(e){}}
-
-async function loadAllData(){
-  const[{data:messages},{data:arrivals}]=await Promise.all([
-    supabaseClient.from('messages').select('*').order('created_at',{ascending:true}),
-    supabaseClient.from('arrivals').select('*').order('created_at',{ascending:true}),
-  ]);
-  renderMessages(messages||[]); renderArrivals(arrivals||[]);
-}
-function subscribeToChanges(){
-  ['messages','arrivals'].forEach(t=>{
-    supabaseClient.channel('pub:'+t).on('postgres_changes',{event:'*',schema:'public',table:t},loadAllData).subscribe();
-  });
-}
-
+// ── ARRIVALS ─────────────────────────────────────────────────────────────────
 const DAY_CLS={'Thu afternoon':'day-thu','Thu evening':'day-thu','Fri morning':'day-fri','Fri midday':'day-fri','Fri afternoon':'day-fri','Sat':'day-sat'};
+
 function renderArrivals(rows){
   const body=document.getElementById('arrivals-body');
-  if(!rows.length){body.innerHTML='<tr><td colspan="4" style="text-align:center;font-style:italic;color:var(--text-light);padding:2rem">Inga anmälda än — var den första!</td></tr>';return;}
-  body.innerHTML=rows.map(r=>`<tr>
+  const real=rows.filter(r=>!r.placeholder);
+  if(!real.length){body.innerHTML='<tr><td colspan="4" style="text-align:center;font-style:italic;color:var(--text-light);padding:2rem">Inga anmälda än — var den första!</td></tr>';return;}
+  body.innerHTML=real.map(r=>`<tr>
     <td><strong>${escHtml(r.name)}</strong><br><span style="font-size:0.75rem;color:var(--text-light)">${r.adults} vuxen${r.adults!=1?'a':''}${r.kids>0?', '+r.kids+' barn':''}</span></td>
     <td><span class="day-badge ${DAY_CLS[r.arriving]||'day-fri'}">${escHtml(r.arriving)}</span></td>
     <td style="font-size:0.85rem;color:var(--text-light)">${escHtml(r.leaving)}</td>
-    <td><button class="arrival-remove" onclick="removeArrival('${r.id||r.name}','${r.name}')">✕</button></td>
+    <td><button class="arrival-remove" onclick="window.removeArrival('${r.id}','${escHtml(r.name)}')">✕</button></td>
   </tr>`).join('');
 }
-async function submitArrival(){
+
+window.submitArrival = async function(){
   const name=document.getElementById('arr-name').value.trim();
   if(!name){alert('Ange ditt familjenamn.');return;}
-  const rec={name,arriving:document.getElementById('arr-arriving').value,leaving:document.getElementById('arr-leaving').value,adults:document.getElementById('arr-adults').value,kids:document.getElementById('arr-kids').value,created_at:new Date().toISOString()};
-  if(useLocalFallback){rec.id=Date.now().toString();localData.arrivals=localData.arrivals||[];localData.arrivals.push(rec);saveLocal();renderArrivals(localData.arrivals);document.getElementById('arr-name').value='';return;}
-  await supabaseClient.from('arrivals').insert(rec);document.getElementById('arr-name').value='';
-}
-async function removeArrival(id,name){
+  await addDoc(collection(db,'arrivals'),{
+    name,
+    arriving:document.getElementById('arr-arriving').value,
+    leaving:document.getElementById('arr-leaving').value,
+    adults:document.getElementById('arr-adults').value,
+    kids:document.getElementById('arr-kids').value,
+    created_at:new Date().toISOString()
+  });
+  document.getElementById('arr-name').value='';
+};
+
+window.removeArrival = async function(id, name){
   if(!confirm('Ta bort '+name+'?'))return;
-  if(useLocalFallback){localData.arrivals=(localData.arrivals||[]).filter(r=>r.id!==id&&r.name!==name);saveLocal();renderArrivals(localData.arrivals);return;}
-  await supabaseClient.from('arrivals').delete().eq('id',id);loadAllData();
+  await deleteDoc(doc(db,'arrivals',id));
+};
+
+// ── MESSAGES ─────────────────────────────────────────────────────────────────
+function renderMessages(msgs){
+  const real=msgs.filter(m=>!m.placeholder);
+  document.getElementById('message-list').innerHTML=real.length?real.map(messageHtml).join(''):'<div class="empty-state">Inga meddelanden än — var den första att skriva!</div>';
 }
 
-function renderMessages(msgs){document.getElementById('message-list').innerHTML=msgs.length?msgs.map(messageHtml).join(''):'<div class="empty-state">Inga meddelanden än — var den första att skriva!</div>';}
-function appendMessage(m){const list=document.getElementById('message-list');const e=list.querySelector('.empty-state');if(e)e.remove();list.insertAdjacentHTML('beforeend',messageHtml(m));list.lastElementChild.scrollIntoView({behavior:'smooth'});}
 function messageHtml(m){
   const tM={question:'tag-question',info:'tag-info',reminder:'tag-reminder'};
   const lM={question:'❓ Fråga',info:'📢 Info',reminder:'🔔 Påminnelse'};
   const date=m.created_at?new Date(m.created_at).toLocaleDateString('sv-SE',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'just nu';
   return `<div class="message-card"><span class="msg-tag-badge ${tM[m.tag]||'tag-info'}">${lM[m.tag]||'📢 Info'}</span><div class="msg-header"><span class="msg-author">${escHtml(m.name)}</span><span class="msg-time">${date}</span></div><div class="msg-text">${escHtml(m.message)}</div></div>`;
 }
-async function postMessage(){
+
+window.postMessage = async function(){
   const name=document.getElementById('msg-name').value.trim(),tag=document.getElementById('msg-tag').value,message=document.getElementById('msg-text').value.trim();
   if(!name||!message){alert('Fyll i namn och meddelande.');return;}
-  if(useLocalFallback){localData.messages.push({name,tag,message,created_at:new Date().toISOString()});saveLocal();document.getElementById('msg-name').value='';document.getElementById('msg-text').value='';renderMessages(localData.messages);return;}
-  await supabaseClient.from('messages').insert({name,tag,message});
-  document.getElementById('msg-name').value='';document.getElementById('msg-text').value='';
-}
+  await addDoc(collection(db,'messages'),{name,tag,message,created_at:new Date().toISOString()});
+  document.getElementById('msg-name').value='';
+  document.getElementById('msg-text').value='';
+};
 
+// ── ADMIN ─────────────────────────────────────────────────────────────────────
 let adminClicks=0,adminTimer=null;
 document.getElementById('admin-trigger').addEventListener('click',()=>{
   adminClicks++;clearTimeout(adminTimer);adminTimer=setTimeout(()=>{adminClicks=0;},1500);
   if(adminClicks>=3){adminClicks=0;const pw=prompt('Ange adminlösenord:');if(pw===ADMIN_PASSWORD)document.body.classList.add('admin-mode');else if(pw!==null)alert('Fel lösenord.');}
 });
-function exitAdmin(){document.body.classList.remove('admin-mode');}
-function toggleMobileNav(){document.getElementById('mobile-nav').classList.toggle('open');}
-function closeMobileNav(){document.getElementById('mobile-nav').classList.remove('open');}
+window.exitAdmin=function(){document.body.classList.remove('admin-mode');};
+window.toggleMobileNav=function(){document.getElementById('mobile-nav').classList.toggle('open');};
+window.closeMobileNav=function(){document.getElementById('mobile-nav').classList.remove('open');};
 
+// ── NAV OBSERVER ──────────────────────────────────────────────────────────────
 const SECTIONS=['place','meals','bar','arrivals','getting-there','schedule','board','cleaning','cows'];
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){
@@ -773,17 +807,17 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:0.25,rootMargin:'-60px 0px -60px 0px'});
 SECTIONS.forEach(id=>{const el=document.getElementById(id);if(el)obs.observe(el);});
 
+// ── COUNTDOWN ─────────────────────────────────────────────────────────────────
 function updateCountdown(){
   const diff=new Date('2026-06-18T14:00:00')-new Date();
   if(diff<=0){document.getElementById('countdown').innerHTML='<div style="font-family:Playfair Display,serif;font-style:italic;font-size:1.5rem;color:var(--rose)">Det är midsommar! 🌸</div>';return;}
   document.getElementById('cd-days').textContent=Math.floor(diff/86400000);
-  document.getElementById('cd-hours').textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'00');
-  document.getElementById('cd-mins').textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'00');
+  document.getElementById('cd-hours').textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+  document.getElementById('cd-mins').textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
 }
 function escHtml(str){return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 updateCountdown();setInterval(updateCountdown,30000);
-initSupabase();
 </script>
 </body>
 </html>
