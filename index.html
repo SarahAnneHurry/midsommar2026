@@ -709,9 +709,10 @@
 </section>
 
 <footer>
-  <div class="footer-title" id="admin-trigger">Midsommar 2026 · Tribäck</div>
+  <div class="footer-title">Midsommar 2026 · Tribäck</div>
   <p>18–21 Juni 2026 · Vi ses vid sjön 🌿</p>
   <p style="margin-top:1rem">Frågor? Skriv på anslagstavlan ovan.</p>
+  <p style="margin-top:2rem"><button id="admin-trigger" style="background:none;border:none;color:rgba(255,255,255,0.15);font-size:0.7rem;cursor:pointer;letter-spacing:0.1em;font-family:'Lato',sans-serif;">⚙ Admin</button></p>
 </footer>
 
 <div class="team-edit-modal" id="team-edit-modal">
@@ -726,8 +727,8 @@
 </div>
 
 <div class="admin-bar">
-  <div class="admin-bar-label"><span class="admin-dot"></span> Adminläge — klicka på ett lagnamn för att ändra det</div>
-  <button class="exit-admin-btn" onclick="exitAdmin()">Avsluta adminläge</button>
+  <div class="admin-bar-label"><span class="admin-dot"></span> Adminläge — klicka på ett lagnamn i tabellen för att ändra det</div>
+  <button class="exit-admin-btn" onclick="window.exitAdmin()">Avsluta adminläge</button>
 </div>
 
 <script type="module">
@@ -745,7 +746,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const ADMIN_PASSWORD = 'midsommar2026';
+const ADMIN_PASSWORD = 'Midsommar26';
 
 // ── TEAM NAMES ────────────────────────────────────────────────────────────────
 let teamNames = {A:'Team A',B:'Team B',C:'Team C',D:'Team D',E:'Team E',F:'Team F',G:'Team G',H:'Team H'};
@@ -865,10 +866,10 @@ window.postMessage = async function(){
 };
 
 // ── ADMIN ─────────────────────────────────────────────────────────────────────
-let adminClicks=0,adminTimer=null;
 document.getElementById('admin-trigger').addEventListener('click',()=>{
-  adminClicks++;clearTimeout(adminTimer);adminTimer=setTimeout(()=>{adminClicks=0;},1500);
-  if(adminClicks>=3){adminClicks=0;const pw=prompt('Ange adminlösenord:');if(pw===ADMIN_PASSWORD)document.body.classList.add('admin-mode');else if(pw!==null)alert('Fel lösenord.');}
+  const pw=prompt('Ange adminlösenord:');
+  if(pw===ADMIN_PASSWORD) document.body.classList.add('admin-mode');
+  else if(pw!==null) alert('Fel lösenord.');
 });
 window.exitAdmin=function(){document.body.classList.remove('admin-mode');};
 window.toggleMobileNav=function(){document.getElementById('mobile-nav').classList.toggle('open');};
