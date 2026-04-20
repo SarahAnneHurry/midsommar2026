@@ -71,7 +71,7 @@
   .photo-caption{margin-top:0.7rem;font-size:0.75rem;color:var(--text-light);text-align:center;font-style:italic}
 
   /* INFO BLOCKS */
-  .info-blocks{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+  .info-blocks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-top:2.5rem}
   .info-block{background:var(--white);border-radius:14px;padding:1.6rem 1.8rem;border-top:3px solid var(--sage)}
   .info-block.rose-top{border-top-color:var(--rose)}
   .info-block.gold-top{border-top-color:var(--gold)}
@@ -392,10 +392,19 @@
       <div class="info-block gold-top">
         <h3>🏠 Platsen &amp; husen</h3>
         <ul>
-          <li><strong>Det finns plats för varje familj att ha sitt eget rum</strong> — Alla har egentligen riktiga sängar, men vissa familjer kan även behöva ha madrasser på golvet beroende på storlek</li>
+          <li>Det finns ett rum för varje familj. För större familjer finns madrasser att ha på golvet så att alla får en sängplats</li>
           <li>Vi delar platsen med en annan familj — <strong>flytta inte saker mellan husen</strong></li>
-          <li>Rapportera genast till värdarna om något går sönder</li>
+          <li>Säg till oss om något råkar gå sönder</li>
           <li>Vi behöver alla hjälpas åt att städa innan vi åker — egna rum, hallar, kök, vardagsrum och badrum behöver en runda</li>
+        </ul>
+      </div>
+      <div class="info-block rose-top">
+        <h3>🚿 Vatten &amp; sanitet</h3>
+        <ul>
+          <li>Det finns <strong>2 duschar</strong> och begränsat med varmvatten — håll duschen kort</li>
+          <li><strong>Att bada i sjön</strong> är ett utmärkt alternativ</li>
+          <li>Männen uppmanas att <strong>kissa utomhus</strong> när möjlighet ges</li>
+          <li><strong>Utedasset</strong> är öppen för användning</li>
         </ul>
       </div>
       <div class="info-block">
@@ -418,7 +427,8 @@
   <div class="section-inner">
     <p class="section-label">Matplanering</p>
     <h2 class="section-title">Meal <em>Teams</em></h2>
-    <p class="section-body" style="margin-bottom:2rem">Varje lag ansvarar för planering, inköp, matlagning och städning. Kolla allergier och matpreferenser nedan innan du planerar din meny.</p>
+    <p class="section-body" style="margin-bottom:1rem">Varje lag ansvarar för planering, inköp, matlagning och städning. Kolla allergier och matpreferenser nedan innan du planerar din meny.</p>
+    <p style="font-size:0.9rem;color:var(--text);line-height:1.7;margin-bottom:2rem;padding:0.8rem 1.2rem;background:var(--rose-pale);border-left:3px solid var(--rose);border-radius:6px">🧹 <strong>Alla hjälps åt att städa efter måltider</strong> — men det ansvariga laget ser till att köket lämnas i gott skick.</p>
     <div style="background:var(--cream);border-left:3px solid var(--gold);border-radius:10px;padding:1.4rem 1.6rem;margin-bottom:1.5rem">
       <h3 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--gold);margin-bottom:0.7rem">💡 Om upplägget</h3>
       <p style="font-size:0.9rem;color:var(--text);line-height:1.8">Vi delade upp måltiderna i <strong>barn- och vuxenmåltider</strong> på grund av gruppens storlek. Med tanke på logistiken — inte bara att transportera egna saker utan även mat till så många personer — valde vi till exempel att ge ett lag ansvar för <strong>midsommartårtan</strong> (samt en barnmiddag), medan <strong>midsommarlunchen</strong> är ett eget lags ansvar. Tanken kring att vissa lag har mer än ett ansvar är också att <strong>barnmåltider inte ska vara komplicerade</strong> och att vuxenmåltider kan ha lite mer eftertanke.</p>
@@ -426,31 +436,30 @@
     <div class="allergy-notice">
       <h3>⚠️ Allergier &amp; matpreferenser</h3>
       <div class="allergy-list">
-        <div class="allergy-item"><strong>Glutenfri</strong> <span>— Sarah, Karin</span></div>
+        <div class="allergy-item"><strong>Glutenfri (inkl. soja)</strong> <span>— Sarah, Karin</span></div>
         <div class="allergy-item"><strong>Hasselnötter, Mandlar, Jordgubbar</strong> <span>— Alexis</span></div>
         <div class="allergy-item"><strong>Skaldjur</strong> <span>— Sabina</span></div>
+        <div class="allergy-item" style="margin-top:0.6rem;font-style:italic;color:var(--text-light);font-size:0.82rem">Hör av dig om något behöver uppdateras eller ändras.</div>
       </div>
     </div>
     <div id="db-status-bar" class="db-status">⏳ Ansluter…</div>
     <div class="meals-table-wrap" style="margin-top:1rem">
       <table class="meals-table">
         <thead>
-          <tr><th>Lag</th><th>Dag</th><th>Måltid</th><th>Ansvar</th><th>Noteringar</th><th>Hygienbidrag</th></tr>
+          <tr><th>Lag</th><th>Dag</th><th>Måltid</th><th>Ansvar</th><th>Tillbehör</th></tr>
         </thead>
         <tbody>
-          <tr class="day-group-thu"><td><span class="team-pill">Sarah &amp; Mårten</span></td><td><span class="day-pill dp-thu">Torsdag</span></td><td>Middag (vuxna &amp; barn)</td><td>Planera, handla, laga, städa</td><td>För dem som anländer på torsdag</td><td></td></tr>
-          <tr class="day-group-fri"><td><span class="team-pill" data-team="A">Team A</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Vuxna midsommarlunch inkl dryck och dekorationer</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">papperstallrikar</td></tr>
-          <tr class="day-group-fri"><td><span class="team-pill" data-team="B">Team B</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Vuxna middag inkl dryck</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">sopsäckar</td></tr>
-          <tr class="day-group-sat"><td><span class="team-pill" data-team="C">Team C</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Vuxna lunch inkl dryck</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">pappersservetter</td></tr>
-          <tr class="day-group-sat"><td><span class="team-pill" data-team="D">Team D</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Vuxna middag inkl dryck</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">toapapper</td></tr>
-          <tr class="day-group-all"><td><span class="team-pill" data-team="E">Team E</span></td><td><span class="day-pill dp-all">Alla dagar</span></td><td>Frukost</td><td>Handla för alla 3 morgnar</td><td>Självservering — 17 vuxna · 19 barn</td><td class="hygien-cell">hushållspapper</td></tr>
-          <tr class="day-group-fri"><td><span class="team-pill" data-team="E">Team E</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Barnmiddag</td><td>Planera, handla, laga, städa</td><td></td><td></td></tr>
-          <tr class="day-group-fri"><td><span class="team-pill" data-team="F">Team F</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Snacks + Cocktail / Festis</td><td>Planera, handla, förbereda, städa</td><td></td><td class="hygien-cell">hushållspapper</td></tr>
-          <tr class="day-group-fri"><td><span class="team-pill" data-team="F">Team F</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Barnlunch</td><td>Planera, handla, laga, städa</td><td></td><td></td></tr>
-          <tr class="day-group-sat"><td><span class="team-pill" data-team="G">Team G</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Snacks + Cocktail / Festis</td><td>Planera, handla, förbereda, städa</td><td></td><td class="hygien-cell">våtservetter</td></tr>
-          <tr class="day-group-sat"><td><span class="team-pill" data-team="G">Team G</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Barnlunch</td><td>Planera, handla, laga, städa</td><td></td><td></td></tr>
-          <tr class="day-group-fri"><td><span class="team-pill" data-team="H">Team H</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Midsommartårta</td><td>Planera, handla, laga, städa</td><td></td><td class="hygien-cell">toapapper</td></tr>
-          <tr class="day-group-sat"><td><span class="team-pill" data-team="H">Team H</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Barnmiddag</td><td>Planera, handla, laga, städa</td><td></td><td></td></tr>
+          <tr class="day-group-thu"><td><span class="team-pill">Sarah &amp; Mårten</span></td><td><span class="day-pill dp-thu">Torsdag</span></td><td>Middag (vuxna &amp; barn) <span style="font-size:0.75rem;color:var(--text-light)">· 36 pers</span></td><td>Planera, handla, laga, städa</td><td></td></tr>
+          <tr class="day-group-fri"><td><span class="team-pill" data-team="A">Team A</span><br><span style="font-size:0.72rem;color:var(--text-light)">2 vuxna</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Vuxna midsommarlunch inkl dryck &amp; dekorationer <span style="font-size:0.75rem;color:var(--text-light)">· 17 pers</span></td><td>Planera, handla, laga, städa</td><td class="hygien-cell">Papperstallrikar</td></tr>
+          <tr class="day-group-fri"><td><span class="team-pill" data-team="B">Team B</span><br><span style="font-size:0.72rem;color:var(--text-light)">2 vuxna</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Vuxna middag inkl dryck <span style="font-size:0.75rem;color:var(--text-light)">· 17 pers</span></td><td>Planera, handla, laga, städa</td><td class="hygien-cell">Sopsäckar</td></tr>
+          <tr class="day-group-sat"><td><span class="team-pill" data-team="C">Team C</span><br><span style="font-size:0.72rem;color:var(--text-light)">2 vuxna</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Vuxna lunch inkl dryck <span style="font-size:0.75rem;color:var(--text-light)">· 17 pers</span></td><td>Planera, handla, laga, städa</td><td class="hygien-cell">Pappersservetter</td></tr>
+          <tr class="day-group-sat"><td><span class="team-pill" data-team="D">Team D</span><br><span style="font-size:0.72rem;color:var(--text-light)">2 vuxna</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Vuxna middag inkl dryck <span style="font-size:0.75rem;color:var(--text-light)">· 17 pers</span></td><td>Planera, handla, laga, städa</td><td class="hygien-cell">Toapapper</td></tr>
+          <tr class="day-group-fri"><td><span class="team-pill" data-team="E">Team E</span><br><span style="font-size:0.72rem;color:var(--text-light)">2 vuxna</span></td><td><span class="day-pill dp-fri">Fredag &amp; Lördag</span></td><td>Snacks + Cocktail / Festis (båda dagarna) <span style="font-size:0.75rem;color:var(--text-light)">· 36 pers</span></td><td>Planera, handla, förbereda, städa</td><td class="hygien-cell">Fredag – Hushållspapper · Lördag – Våtservetter</td></tr>
+          <tr class="day-group-fri"><td><span class="team-pill" data-team="E">Team E</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Barnmiddag <span style="font-size:0.75rem;color:var(--text-light)">· 19 barn</span></td><td>Planera, handla, laga, städa</td><td></td></tr>
+          <tr class="day-group-all"><td><span class="team-pill" data-team="F">Team F</span><br><span style="font-size:0.72rem;color:var(--text-light)">3 vuxna ⭐</span></td><td><span class="day-pill dp-all">Alla dagar</span></td><td>Frukost – alla 3 morgnar <span style="font-size:0.75rem;color:var(--text-light)">· 36 pers</span></td><td>Handla för alla 3 morgnar. Självservering.</td><td class="hygien-cell">Hushållspapper</td></tr>
+          <tr class="day-group-fri"><td><span class="team-pill" data-team="F">Team F</span></td><td><span class="day-pill dp-fri">Fredag &amp; Lördag</span></td><td>Barnlunch (båda dagarna) <span style="font-size:0.75rem;color:var(--text-light)">· 19 barn</span></td><td>Planera, handla, laga, städa</td><td></td></tr>
+          <tr class="day-group-fri"><td><span class="team-pill" data-team="G">Team G</span><br><span style="font-size:0.72rem;color:var(--text-light)">2 vuxna</span></td><td><span class="day-pill dp-fri">Fredag</span></td><td>Midsommartårta <span style="font-size:0.75rem;color:var(--text-light)">· 36 pers</span></td><td>Planera, handla, laga, städa</td><td class="hygien-cell">Toapapper</td></tr>
+          <tr class="day-group-sat"><td><span class="team-pill" data-team="G">Team G</span></td><td><span class="day-pill dp-sat">Lördag</span></td><td>Barnmiddag <span style="font-size:0.75rem;color:var(--text-light)">· 19 barn</span></td><td>Planera, handla, laga, städa</td><td></td></tr>
         </tbody>
       </table>
     </div>
@@ -749,7 +758,7 @@ const db = getFirestore(app);
 const ADMIN_PASSWORD = 'Midsommar26';
 
 // ── TEAM NAMES ────────────────────────────────────────────────────────────────
-let teamNames = {A:'Team A',B:'Team B',C:'Team C',D:'Team D',E:'Team E',F:'Team F',G:'Team G',H:'Team H'};
+let teamNames = {A:'Team A',B:'Team B',C:'Team C',D:'Team D',E:'Team E',F:'Team F',G:'Team G'};
 let editingTeam = null;
 
 async function loadTeamNames(){
