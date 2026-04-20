@@ -291,6 +291,7 @@
     <li><a href="#meals">Meal Teams</a></li>
     <li><a href="#bar">Bar</a></li>
     <li><a href="#arrivals">Arrivals</a></li>
+    <li><a href="#board">Board</a></li>
     <li><a href="#getting-there">Getting There</a></li>
     <li><a href="#schedule">Schedule</a></li>
     <li><a href="#board">Board</a></li>
@@ -307,6 +308,7 @@
   <a href="#meals" onclick="closeMobileNav()">Meal Teams</a>
   <a href="#bar" onclick="closeMobileNav()">Bar</a>
   <a href="#arrivals" onclick="closeMobileNav()">Arrivals</a>
+  <a href="#board" onclick="closeMobileNav()">Message Board</a>
   <a href="#getting-there" onclick="closeMobileNav()">Getting There</a>
   <a href="#schedule" onclick="closeMobileNav()">Schedule</a>
   <a href="#board" onclick="closeMobileNav()">Message Board</a>
@@ -319,6 +321,7 @@
   <a href="#meals" class="jump-btn">🍽 Meal Teams</a>
   <a href="#bar" class="jump-btn">🍹 Bar</a>
   <a href="#arrivals" class="jump-btn">📅 Arrivals</a>
+  <a href="#board" class="jump-btn">💬 Board</a>
   <a href="#getting-there" class="jump-btn">🗺 Getting There</a>
   <a href="#schedule" class="jump-btn">🗓 Schedule</a>
   <a href="#board" class="jump-btn">💬 Board</a>
@@ -346,7 +349,7 @@
   </svg>
   <p class="hero-eyebrow">Du är inbjuden ✦ Midsommar 2026</p>
   <h1 class="hero-title">Midsommar<br>at <em>Tribäck</em></h1>
-  <p class="hero-subtitle">A summer weekend with good friends, good food, and long summer evenings.</p>
+  <p class="hero-subtitle">A weekend with good friends, good food, and long summer evenings. Vi ses vid sjön 🌿</p>
   <div class="hero-dates">
     <div class="hero-date-pill">Torsdag 18 Juni</div>
     <span class="hero-divider">→</span>
@@ -539,6 +542,32 @@
 </section>
 <hr class="divider">
 
+<!-- MESSAGE BOARD -->
+<section id="board">
+  <div class="section-inner">
+    <p class="section-label">Håll koll</p>
+    <h2 class="section-title">Message <em>Board</em></h2>
+    <p class="section-body">Ställ frågor, dela uppdateringar eller flagga saker alla bör känna till.</p>
+    <div class="board-layout">
+      <div><div class="message-list" id="message-list"><div class="empty-state">Inga meddelanden än — var den första att skriva!</div></div></div>
+      <div class="board-form">
+        <h3>Skriv ett meddelande</h3>
+        <div class="form-group"><label class="form-label">Ditt namn</label><input class="form-input" id="msg-name" placeholder="t.ex. Sara &amp; Johan"></div>
+        <div class="form-group"><label class="form-label">Typ</label>
+          <select class="form-select" id="msg-tag">
+            <option value="info">📢 Info / Uppdatering</option>
+            <option value="question">❓ Fråga</option>
+            <option value="reminder">🔔 Påminnelse</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Meddelande</label><textarea class="form-textarea" id="msg-text" placeholder="Vad tänker du på?"></textarea></div>
+        <button class="submit-btn" onclick="postMessage()">Skicka</button>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
 <!-- GETTING THERE -->
 <section id="getting-there">
   <div class="section-inner">
@@ -621,34 +650,6 @@
     </div>
   </div>
 </section>
-<hr class="divider">
-
-<!-- MESSAGE BOARD -->
-<section id="board">
-  <div class="section-inner">
-    <p class="section-label">Håll koll</p>
-    <h2 class="section-title">Message <em>Board</em></h2>
-    <p class="section-body">Ställ frågor, dela uppdateringar eller flagga saker alla bör känna till.</p>
-    <div class="board-layout">
-      <div><div class="message-list" id="message-list"><div class="empty-state">Inga meddelanden än — var den första att skriva!</div></div></div>
-      <div class="board-form">
-        <h3>Skriv ett meddelande</h3>
-        <div class="form-group"><label class="form-label">Ditt namn</label><input class="form-input" id="msg-name" placeholder="t.ex. Sara &amp; Johan"></div>
-        <div class="form-group"><label class="form-label">Typ</label>
-          <select class="form-select" id="msg-tag">
-            <option value="info">📢 Info / Uppdatering</option>
-            <option value="question">❓ Fråga</option>
-            <option value="reminder">🔔 Påminnelse</option>
-          </select>
-        </div>
-        <div class="form-group"><label class="form-label">Meddelande</label><textarea class="form-textarea" id="msg-text" placeholder="Vad tänker du på?"></textarea></div>
-        <button class="submit-btn" onclick="postMessage()">Skicka</button>
-      </div>
-    </div>
-  </div>
-</section>
-<hr class="divider">
-
 <hr class="divider">
 
 <!-- CLEANING -->
@@ -885,7 +886,7 @@ window.toggleMobileNav=function(){document.getElementById('mobile-nav').classLis
 window.closeMobileNav=function(){document.getElementById('mobile-nav').classList.remove('open');};
 
 // ── NAV OBSERVER ──────────────────────────────────────────────────────────────
-const SECTIONS=['place','meals','bar','arrivals','getting-there','schedule','board','cleaning','cows'];
+const SECTIONS=['place','meals','bar','arrivals','board','getting-there','schedule','cleaning','cows'];
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){
     document.querySelectorAll('.jump-btn').forEach(b=>b.classList.remove('active'));
